@@ -1,0 +1,9 @@
+<% form_for(:pages, @page, :url => { :action => 'update_page', :id => @page.id }) do |f| %>
+        <%= render :partial => 'page_form', :locals => {:f => f, :pages => @page} %>
+        <p>
+            <%= f.submit "Update your Page", :id => 'pages_submit', :class => 'btn-admin' %>
+        </p>
+        <p>
+        	<%= link_to 'Back', { :action => 'list_pages' }, :class => 'admin-command'  %>
+        </p>
+<% end -%>

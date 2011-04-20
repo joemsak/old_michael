@@ -1,0 +1,15 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+		<title>Michael Youngblood Photography</title>
+		<link href="/stylesheets/temp.css" rel="stylesheet" type="text/css" media="screen" />
+	</head>
+	<body>
+		<img src="/images/child.jpg" alt="" />
+		<h1 id="logo" class="hide">Michael Youngblood Photography</h1>
+		<p>Coming Soon</p>
+		<p class="whisper">(very soon)</p>
+	</body>
+</html>

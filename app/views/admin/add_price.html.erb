@@ -1,0 +1,9 @@
+<% form_for(:prices, @price, :url => { :action => 'create_price' }) do |f| %>
+        <%= render :partial => 'price_form', :locals => {:f => f, :prices => @price} %>
+        <p>
+            <%= f.submit "Save your Price", :id => 'prices_submit', :class => 'btn-admin' %>
+        </p>
+        <p>
+        	<%= link_to 'Back', { :action => 'list_prices' }, :class => 'admin-command'  %>
+        </p>
+<% end -%>

@@ -1,0 +1,9 @@
+<div id="sub-content" class="clear">
+	<h2><%= @page.title %></h2>
+	<div class="content">
+		<%= @page.content -%>
+		<% if @page.title == "Prices" %>
+			<%= render :partial => 'prices_table' %>
+		<% end %>
+	</div>
+</div>

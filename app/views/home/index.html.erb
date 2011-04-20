@@ -1,0 +1,24 @@
+<div class="clear csw" id="imageSlider">
+	<% @pos = 0
+		for category in @key_categories do 
+		 unless category.thumbnail? -%>
+			<div id="photo_<%= category.id %>" style="right:<%= @pos %>px" class="panel right" onClick="location.href='/home/gallery/<%= category.title.gsub(' ', '_') %>'">
+				<% if category != @key_categories.last -%>
+					<%= image_tag(category.public_filename(), :class => 'img') %>
+				<% else -%>
+					<%= image_tag(category.public_filename(), :class => 'img top') %>
+				<% end -%>
+				<%= image_tag('these-aint-your-photos!.png', :id => 'protect-me', :alt => '') %>
+			</div>
+		<% @pos += 20 
+		  end 
+		end -%>
+</div>
+<ul id="photo-list">
+			<% for category in @categories do 
+				unless category.thumbnail? -%>
+				<li>
+					<%= link_to category.title, { :action => 'gallery', :id => category }, :id => 'photo_' + category.id.to_s() %>								</li>
+			<% end
+			end -%>
+		</ul>

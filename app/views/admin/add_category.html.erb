@@ -1,0 +1,14 @@
+<%= error_messages_for 'category' %>
+<% form_for(:categories, @category, :url => { :action => 'create_category' }, :html => { :multipart => true }) do |f| %>
+        <%= render :partial => 'category_form', :locals => {:f => f, :pages => @category} %>
+        <p>
+	    	<%= f.check_box :active, :checked => 'checked' %><label for="categories_active">Activate Category?</label>
+	    </p>
+    </div>
+        <p>
+            <%= f.submit "Save your Category", :id => 'category_submit', :class => 'btn-admin' %>
+        </p>
+        <p>
+        	<%= link_to 'Back', { :action => 'list_categories' }, :class => 'admin-command'  %>
+        </p>
+<% end -%>

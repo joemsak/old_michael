@@ -1,0 +1,31 @@
+<%= flash[:notice] %>
+<div id="contact-form">
+<% form_tag :action => "send_mail" do -%>
+	 <p>Send Michael your questions or comments and he'll respond to you quickly. We will not share your information with anybody.</p>
+	 
+  <p>
+    <%= label_tag "email[name]", "Name" %><br />
+    <%= text_field :email, :name %>
+  </p>
+
+  <p>
+    <%= label_tag "email[address]", "Your Email Address" %><br />
+    <%= text_field :email, :address %>
+  </p>
+
+  <p>
+    <%= label_tag "email[subject]", "Subject" %><br />
+    <%= text_field :email, :subject %>
+  </p>
+
+  <p>
+    <%= label_tag "email[body]", "Your Message" %><br />
+    <%= text_area :email, :body, :rows => 8, :cols => 50 %>
+  </p>
+
+  <p>
+    <%= submit_tag "Submit" %>
+  </p>
+<% end -%>
+<%= image_tag('/system/uploads/0000/0059/Final_Business_Card4_copy.jpg') %>
+</div>

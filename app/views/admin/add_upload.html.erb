@@ -1,0 +1,12 @@
+<h2>Add an Image</h2>
+<%= error_messages_for 'upload' %>
+<% form_for(:upload, @upload, :url => { :action => 'upload_upload' }, :html => { :multipart => true }) do |f| %>
+       <div class="form">
+	    <p>
+    	  <%= f.file_field :uploaded_data %>
+	    </p>
+    </div>
+        <p>
+            <%= f.submit "Upload Image", :id => 'category_submit', :class => 'btn-admin' %>
+        </p>
+<% end -%>

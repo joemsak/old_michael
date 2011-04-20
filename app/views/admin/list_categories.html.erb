@@ -1,0 +1,12 @@
+<h2>Categories</h2>
+<ul id="sortable_category_list" class="admin-list">
+<% @categories.each do |category| 
+	unless category.thumbnail? -%>
+<li id="item_<%= category.id %>"><%= link_to category.title + '&nbsp;<span>&#8592;&nbsp;edit</span>', :action => 'edit_category', :id => category.id %><br /><%= lightbox_link_to image_tag(category.public_filename(:thumb)), category.public_filename, :title => category.title %><br /><%= link_to category.active? ? "Deactivate" : "Activate", { :action => category.active? ? "deactivate_category" : "activate_category", :id => category.id }, :class => 'lnk_active' %><br /><%= link_to 'Delete', { :action => 'delete_category', :id => category.id }, :class => 'lnk-del', :confirm => 'You will permanently delete the ' + category.title + ' category. Are you sure?' %></li>
+	<% end
+ end -%>
+</ul>
+<p>
+<%= link_to 'New Category', { :action => 'add_category' }, :class => 'admin-command' %>
+</p>
+<%= sortable_element 'sortable_category_list', :complete => visual_effect(:highlight, 'sortable_category_list'), :url => { :action => "update_category_sort_order" } %>

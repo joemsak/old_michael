@@ -1,0 +1,39 @@
+<% title(params[:id].titlecase) %>
+<div id="sub-content" class="gallery clear">
+	<div id="png">
+		<%= image_tag('these-aint-your-photos!.png', :id => 'protect-me', :alt => '') %>
+		
+	</div>
+	<div id="photo-bg"></div>
+	<div id="photo">
+		
+	</div>
+	
+	
+	<div id="thumbs">
+	
+	<ul id="thumb-list" class="noscript">
+	<% for photo in @photos -%>
+		<% unless photo.thumbnail? %>
+			<li>										
+				<%= link_to image_tag(photo.public_filename(:cropped)), photo.public_filename, :id => photo.id, :original => photo.public_filename %>
+			</li>
+		<% end 
+		end -%>
+	</ul>
+	</div>
+	<div id="controls"></div>
+		<ul id="photo-list-gallery" class="clear">
+			<% for category in @categories do 
+				unless category.thumbnail? -%>
+				<li class="photo_<%= category.id %>">
+				<%  if params[:id].downcase == category.title.downcase -%>
+				    <%= link_to category.title, { :action => 'gallery', :id => category }, :class => 'here' %>
+				<% else -%>
+					<%= link_to category.title, { :action => 'gallery', :id => category } %>
+				<% end -%>
+				</li>
+			<% end
+			end -%>
+		</ul>	
+</div>

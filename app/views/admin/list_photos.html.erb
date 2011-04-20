@@ -1,0 +1,51 @@
+<% form_for(:photo, :url => { :action => "upload_photo" },
+						 :html => { :multipart => true }) do |f| -%>
+<!--[form:photo]-->
+<p class="upload_strip">
+
+<label for="photo_uploaded_data">Upload a Photo:</label>&nbsp;<%= f.file_field :uploaded_data %>&nbsp;<%= select('photo', 'category_id', @category_list, {:include_blank => 'Select a Category...', :selected => @default_upload_category.id}) %>&nbsp;<%= submit_tag 'Add' %>
+
+</p>
+<% end -%>
+
+<div id="page-form">
+<h2 class="photos">Photos</h2>
+<div id="category_gallery">
+<% if params[:id] == nil %>
+	<p class="success">Use the categories on the right to browse your photos.</p>
+<% end %>
+<% unless @photo_categories.nil?
+	for photo_category in @photo_categories do 
+		unless photo_category.thumbnail? -%>
+			<div class="category">
+				<h4><%= photo_category.title %></h4>
+				<% if Photo.count(:all, :conditions => { :category_id => params[:id] }) == 0 -%>
+					<p class="error">This category doesn't have any photos in it yet. <strong>Upload new photos above.</strong></p>
+				<% end -%>
+				<ul id="photo_list" class="photo-list">
+				<% for photo in @photos
+						unless photo.thumbnail? %>
+						<li id="item_<%= photo.id %>">										
+							<%= lightbox_link_to image_tag(photo.public_filename(:thumb)), photo.public_filename %><br /><br />
+							<%= link_to 'Delete', { :action => 'delete_photo', :id => photo.id, :category_id => params[:id] }, :class => 'lnk-del', :confirm => 'You will permanently delete this photo. Are you sure?' %>
+						</li>
+					<% end 
+					end -%>
+				</ul>
+				<div class="clear"></div>
+			</div>
+		<% end 
+		end 
+	end -%>
+	<div class="clear">&nbsp;</div>
+</div>
+<div id="category_list">
+<% for category in @categories do
+	unless category.thumbnail? -%>
+	<h3 class="category_title"><%= link_to category.title, :action => 'list_photos', :id => category.id %> <span>(<%= pluralize(Photo.count(:all, :conditions => { :category_id => category.id }), 'photo') %>)</span></h3>
+	
+<% end
+  end -%>
+</div>
+</div>
+<%= sortable_element 'photo_list', :constraint => false, :complete => visual_effect(:highlight, 'photo_list'), :url => { :action => "update_photo_sort_order" } %>

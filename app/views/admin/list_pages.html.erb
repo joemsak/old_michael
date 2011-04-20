@@ -1,0 +1,9 @@
+<h2>Pages</h2>
+<ul id="sortable_page_list" class="admin-list">
+<% @pages.each do |page| -%>
+	<li id="item_<%= page.id %>"><%= link_to page.title, :action => 'edit_page', :id => page.id %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= link_to 'Delete', { :action => 'delete_page', :id => page.id }, :class => 'lnk-del', :confirm => 'You will permanently delete the ' + page.title + ' page. Are you sure?' %></li>
+<% end -%>
+</ul>
+<p>
+<%= link_to 'New Page', { :action => 'add_page' }, :class => 'admin-command' %>
+</p>

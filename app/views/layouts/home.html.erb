@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+		<meta name="description" content="Michigan Photographer Michael Youngblood displays his experience in Wedding, Portrait, Senior Pictures, Landscape, Wildlife, Children, Newborns, &amp; Macro photography.">
+		<meta name="keywords" content="michigan, photography, photographer, michigan photographer, portfolio, photography portfolio, landscape, wildlife, portrait, wedding, senior pictures, child photography, newborn photography, photos">
+		<title><%= yield(:title) %>Photography by Michael Youngblood - Rochester Hills, Michigan</title>
+		<%= stylesheet_link_tag 'home' %>
+	</head>
+	<body class="<%= is_active?('gallery') %>">
+		<div id="frame">
+			<div id="header">
+				<h1 id="logo"><%= link_to 'Michael Youngblood Photography', { :controller => 'home' }, :class => 'hide' %></h1>
+				<ul id="nav">
+						<li><%= link_to 'Home', :controller => 'home' %>&nbsp;|&nbsp;</li>
+					<% @pages.each do |page| -%>
+						<li><%= link_to page.title, :controller => 'home', :action => 'page', :id => page.title %>&nbsp;|&nbsp;</li>
+					<% end -%>
+						<li><%= link_to 'Gallery', :controller => 'home', :action => 'gallery', :id => 'Landscape' %>&nbsp;|&nbsp;</li>
+						<li><%= link_to 'Contact', :controller => 'contact' %>&nbsp;|&nbsp;</li>
+						<li><%= link_to 'Client Access', 'http://proofs.michaelyoungblood.com/login' %></li>
+				</ul>
+			</div>
+			<div id="content" class="clear">
+				<%= yield %>
+			</div>
+		</div>
+		<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+		<script>
+			google.load('jquery','1.2.6');
+		</script>
+		<%= javascript_include_tag 'hoverintent', 'galleriffic', 'functions' %>
+		<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-7599936-2");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+	</body>
+</html>

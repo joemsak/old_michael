@@ -1,0 +1,12 @@
+	<div class="form">
+		<p>
+	      <label for="categories_title">Title:</label><br />
+	      <%= f.text_field :title %>
+	    </p>
+	    <p>
+	      <label for="categories_uploaded_data">Upload A Key Photo:</label><br />
+    	  <%= f.file_field :uploaded_data %>
+	    </p>
+	    <p>
+	      <label for="categories_category_order">Category Order:</label>&nbsp;<%= f.text_field :category_order, :value => @maximum_category_order %>
+	    </p>

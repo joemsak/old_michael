@@ -1,0 +1,12 @@
+	<div class="form">
+		<p>
+	      <label for="prices_name">Name:</label><br />
+	      <%= error_message_on @price, :name, 'Name ' %>
+	      <%= f.text_field :name %>
+	    </p>
+	    <p>
+	      <label for="prices_price">Price:</label><br />
+	      <%= error_message_on @price, :price, 'Price ' %>
+	      <%= f.text_field :price %>
+	    </p>
+    </div>

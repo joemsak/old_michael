@@ -1,0 +1,26 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+		<title>Michael Youngblood Photography Administration</title>
+		<%= stylesheet_link_tag 'admin', 'lightbox' %>
+		<%= javascript_include_tag 'prototype', 'scriptaculous', 'effects', 'dragdrop', 'lightbox' %>
+	</head>
+	<body>
+		<div id="header">
+			<h1><a href="/">Michael Youngblood Photography &laquo; Visit Site</a></h1>
+			<ul id="nav">
+				<li><%= link_to 'Pages', { :action => 'list_pages' }, :class => is_active?('list_pages') %></li>
+				<li><%= link_to 'Categories', { :action => 'list_categories' }, :class => is_active?('list_categories') %></li>
+				<li><%= link_to 'Photos', { :action => 'list_photos' }, :class => is_active?('list_photos') %></li>
+				<li><%= link_to 'Prices', { :action => 'list_prices' }, :class => is_active?('list_prices') %></li>
+				<li id="logout-link"><%= link_to 'Logout', { :controller => 'logout' } %></li>
+			</ul>
+		</div>
+		<div id="admin-content">
+			<%= flash[:notice] %>
+			<%= yield %>
+		</div>
+	</body>
+</html>

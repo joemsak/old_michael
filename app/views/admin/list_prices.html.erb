@@ -1,0 +1,10 @@
+<h2>Prices</h2>
+<ul id="price_list_sortable" class="admin-list">
+<% @prices.each do |price| -%>
+	<li id="item_<%= price.id %>"><%= link_to price.name, :action => 'edit_price', :id => price.id %>&nbsp;&ndash;&nbsp;<%= number_to_currency(price.price) %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= link_to 'Delete', { :action => 'delete_price', :id => price.id }, :class => 'lnk-del', :confirm => 'You will permanently delete the ' + price.name + ' price. Are you sure?' %></li>
+<% end -%>
+</ul>
+<p>
+<%= link_to 'New Price', { :action => 'add_price' }, :class => 'admin-command' %>
+</p>
+<%= sortable_element 'price_list_sortable', :complete => visual_effect(:highlight, 'price_list_sortable'), :url => { :action => "update_price_sort_order" } %>

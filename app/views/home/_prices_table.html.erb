@@ -1,0 +1,14 @@
+<table id="price-table" width="100%">
+	<tr>
+		<th colspan="2">Photo Prints Pricing Chart</th>
+	</tr>
+	<tbody>
+		<% @prices.each do |price| -%>
+			<tr class="<%= cycle('odd', 'even') %>">
+    			<td width="50%"><%= price.name %></td>
+    			<td>$<%= price.price %></td>
+			</tr>
+		<% end -%>
+	</tbody>
+</table>
+<div id="pricing-notice">There is no minimum print order. <strong>You only need to pay for the prints you love.</strong></div>
